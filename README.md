@@ -78,6 +78,37 @@ Copy code
 │ 2025-10-07 09:48:51 │ 192.168.64.12│ Kali-Local   │ TCP   │ 22   │
 │ 2025-10-07 08:15:30 │ 8.8.8.8      │ Unknown      │ ICMP  │      │
 └─────────────────────┴──────────────┴──────────────┴───────┴──────┘
+
+🧱 Installing Suricata (Linux)
+
+Valkry relies on Suricata’s eve.json logs to analyze inbound connections.
+If Suricata isn’t installed on your system, you can set it up in just a few steps:
+
+# Update package lists
+sudo apt update
+
+# Install Suricata
+sudo apt install -y suricata
+
+# Enable and start the Suricata service
+sudo systemctl enable suricata
+sudo systemctl start suricata
+
+# (Optional) Check status to confirm it's running
+sudo systemctl status suricata
+
+
+By default, Suricata writes logs to:
+
+/var/log/suricata/eve.json
+
+
+If the file doesn’t exist, check that Suricata is running and generating traffic, or refer to the Suricata Quickstart Guide
+ for configuration details.
+
+💡 Tip: For best results, ensure Suricata is set to monitor the network interface of the machine you want Valkry to observe. You can adjust the interface in /etc/suricata/suricata.yaml.
+
+
 🧭 How It Works
 Valkry reads the Suricata eve.json log file line by line and:
 
@@ -98,6 +129,8 @@ valkry/
 ├── beelink_security.py      # Main Valkry script
 ├── requirements.txt         # Python dependencies
 └── README.md                # This file
+
+
 ⚠️ Legal Disclaimer
 This project is intended for defensive security, research, and authorized testing only.
 Running Valkry against systems you do not own or have explicit permission to monitor may violate laws.
