@@ -3,7 +3,7 @@
 iprecon is a lightweight Python tool designed for **endpoint IP visibility** on Linux systems.  
 It allows defenders, researchers, and penetration testers to quickly **analyze inbound network activity** over a user-defined time frame using Suricata's `eve.json` logs.
 
-By default, Valkry scans the **last 24 hours** and displays **all IPs that have accessed the target endpoint**, providing clean, color-coded output directly in your terminal.
+By default, iprecon scans the **last 24 hours** and displays **all IPs that have accessed the target endpoint**, providing clean, color-coded output directly in your terminal.
 
 ---
 
